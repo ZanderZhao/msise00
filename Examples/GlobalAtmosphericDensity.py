@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """
-计算并绘制全球大气成分及密度的分布
+Function: 计算并绘制全球大气成分及密度的分布
+online: https://github.com/ZanderZhao/msise00/blob/main/Examples/GlobalAtmosphericDensity.py
+Author: ZanderZhao
 """
 import ftplib
 import os
@@ -8,7 +10,7 @@ from datetime import datetime
 import xarray
 from matplotlib.pyplot import figure
 from pathlib import Path
-import msise00
+import msise00 # https://github.com/space-physics/msise00
 from msise00.worldgrid import latlonworldgrid
 from msise00.plots import writeplot
 # debain需要安装 cmake>=3.14  c c++ fortran 编译器
@@ -219,9 +221,9 @@ if __name__ == "__main__":
 
     # 24周期  2008年-2019年
     # 开始计算的年
-    start_year=2014
+    start_year=2008
     # 停止计算的年
-    end_year=2021
+    end_year=2019
     # 年步长
     delta_year=1
     # # 计算的月
@@ -230,7 +232,7 @@ if __name__ == "__main__":
     # t_day=1
 
     ### run
-    year_list = list(range(start_year,end_year,delta_year))
+    year_list = list(range(start_year,end_year+1,delta_year))
     gad_run(year_list, img_path=save_img_path, nc_path=save_nc_path)
     # gad_run(year_list, img_path=save_img_path, nc_path=save_nc_path,t_month=t_month,t_day=t_day)
 
